@@ -27,10 +27,10 @@ namespace Lab11
             {
                 Console.WriteLine("\nВведённое значение не является числом.");
             }
-            //catch
-            //{
-            //    Console.WriteLine("\nУравнение с введёнными данными не имеет решения.");
-            //}
+            catch (ArgumentException)
+            {
+                Console.WriteLine("\nУравнение с введёнными данными не имеет решения.");
+            }
 
             Console.ReadKey();
         }
@@ -45,7 +45,12 @@ namespace Lab11
         {
             float x = -b / k;
             if (k == 0 && !(b == 0))
-                throw new Exception("ValueException");
+                throw new ArgumentException("Уравнение с введёнными данными не имеет решения");
+            else if (k == 0)
+            {
+                x = 0;
+                return x;
+            }                
             else
                 return x;
         }
